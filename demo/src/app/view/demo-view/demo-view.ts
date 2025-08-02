@@ -11,9 +11,14 @@ import { DemoPartsLog } from './parts/demo-parts-log';
   styleUrls: ['./demo-view.scss']
 })
 export class DemoView {
-  @Input() globalState: { workKind: Signal<string>; userName: Signal<string> } = {
+  @Input() globalState: {
+    workKind: Signal<string>;
+    userName: Signal<string>;
+    progress: Signal<number>;
+  } = {
     workKind: signal(''),
-    userName: signal('')
+    userName: signal(''),
+    progress: signal(0),
   };
   @Input() localState: {
     isEnableComplete: Signal<boolean>;
