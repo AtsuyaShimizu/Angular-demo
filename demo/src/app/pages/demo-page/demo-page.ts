@@ -27,7 +27,8 @@ export class DemoPage {
   // 子に渡す中継シグナル
   globalState = {
     workKind: signal(''),
-    userName: signal('')
+    userName: signal(''),
+    progress: signal(0)
   };
   localState = {
     isEnableComplete:   signal(false),
@@ -55,6 +56,7 @@ export class DemoPage {
         if (!svc) return;
         this.globalState.workKind.set( svc.globalState.workKind() );
         this.globalState.userName .set( svc.globalState.userName() );
+        this.globalState.progress.set( svc.globalState.progress() );
         this.localState.isEnableComplete  .set( svc.localState.isEnableComplete() );
         this.localState.isEnableCancel    .set( svc.localState.isEnableCancel() );
         this.localState.isEnableExecute   .set( svc.localState.isEnableExecute() );

@@ -7,8 +7,9 @@ import { Component, EventEmitter, Input, Output, Signal, computed, signal } from
   styleUrls: ['./demo-parts-center.scss']
 })
 export class DemoPartsCenter {
-  @Input() globalState: { workKind: Signal<string> } = {
-    workKind: signal('')
+  @Input() globalState: { workKind: Signal<string>; progress: Signal<number> } = {
+    workKind: signal(''),
+    progress: signal(0)
   };
   @Input() localState: {
     isEnableComplete: Signal<boolean>;
@@ -26,6 +27,10 @@ export class DemoPartsCenter {
 
   message: Signal<string> = computed(() =>
     `現在実行中の作業は${this.globalState?.workKind()}です。`
+  );
+
+  progressMessage: Signal<string> = computed(() =>
+    `完了数：${this.globalState?.progress()}`
   );
 
   onClickCompleteBtn() {
