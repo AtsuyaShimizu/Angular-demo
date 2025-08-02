@@ -1,0 +1,68 @@
+<div class="demo-container">
+  <aside class="select-side">
+    <div class="dropdown-group">
+      <label class="dropdown-label" for="userSelect">ユーザー選択</label>
+      <select id="userSelect" [value]="globalState.userName()" (change)="onSelectUser($event)">
+        @for (user of userList; track user; let i = $index) {
+          <option [value]="user">{{ user }}</option>
+        }
+      </select>
+    </div>
+    <div class="dropdown-group">
+      <label class="dropdown-label" for="workSelect">作業選択</label>
+      <select id="workSelect" [value]="globalState.workKind()" (change)="onSelectWork($event)">
+        @for (work of workList; track work; let i = $index) {
+          <option [value]="work">{{ work }}</option>
+        }
+      </select>
+    </div>
+  </aside>
+
+  <div class="center-content">
+    <div class="message">
+      {{ message() }}
+    </div>
+    <div class="btn-group">
+      <button 
+        class="action-btn complete" 
+        [disabled]="!localState.isEnableComplete()" 
+        (click)="onClickCompleteBtn()"
+      >
+        完了
+      </button>
+      <button 
+        class="action-btn cancel"
+        [disabled]="!localState.isEnableCancel()" 
+        (click)="onClickCancelBtn()"
+      >
+        キャンセル
+      </button>
+      <button 
+        class="action-btn execute" 
+        (click)="onClickExecuteBtn()"
+      >
+        実行
+      </button>
+    </div>
+  </div>
+  
+  <aside class="log-side">
+    <div class="log-title">変更履歴</div>
+    <table class="log-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of log(); track item; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ item }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </aside>
+</div>

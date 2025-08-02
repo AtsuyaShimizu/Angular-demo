@@ -1,0 +1,13 @@
+<app-demo-view
+  [globalState]="globalState"
+  [localState]="localState"
+  [userList]="userList"
+  [workList]="workList"
+  (click_complete_event)="onComplete()"
+  (click_cancel_event)="onCancel()"
+  (click_execute_event)="onExecute()"
+  (select_user)="onSelectUser($event)"
+  (select_work)="onSelectWork($event)"
+>
+</app-demo-view>
+
