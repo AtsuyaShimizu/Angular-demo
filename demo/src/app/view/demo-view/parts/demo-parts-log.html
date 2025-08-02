@@ -1,0 +1,19 @@
+<aside class="log-side">
+  <div class="log-title">変更履歴</div>
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of log(); track item; let i = $index) {
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ item }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</aside>

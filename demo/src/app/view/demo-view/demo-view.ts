@@ -1,7 +1,12 @@
-import { Component, computed, effect, EventEmitter, Input, Output, signal, Signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { DemoPartsSelect } from './parts/demo-parts-select';
+import { DemoPartsCenter } from './parts/demo-parts-center';
+import { DemoPartsLog } from './parts/demo-parts-log';
 
 @Component({
   selector: 'app-demo-view',
+  standalone: true,
+  imports: [DemoPartsSelect, DemoPartsCenter, DemoPartsLog],
   templateUrl: './demo-view.html',
   styleUrls: ['./demo-view.scss']
 })
@@ -32,34 +37,4 @@ export class DemoView {
   @Output() select_work          = new EventEmitter<string>();
   @Output() select_user          = new EventEmitter<string>();
 
-  message: Signal<string> = computed(() =>
-    `現在実行中の作業は${this.globalState?.workKind()}です。`
-  );
-
-  log = signal<string[]>([]);
-
-  constructor() {
-  }
-
-  onClickCompleteBtn() {
-    this.click_complete_event.emit();
-  }
-
-  onClickCancelBtn() {
-    this.click_cancel_event.emit();
-  }
-
-  onClickExecuteBtn() {
-    this.click_execute_event.emit();
-  }
-
-  onSelectUser(event: Event) {
-    const value = (event.target as HTMLSelectElement).value;
-    this.select_user.emit(value);
-  }
-
-  onSelectWork(event: Event) {
-    const value = (event.target as HTMLSelectElement).value;
-    this.select_work.emit(value);
-  }
 }
