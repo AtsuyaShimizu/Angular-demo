@@ -21,6 +21,8 @@ export class DemoServiceImplA implements DemoServiceInterface {
 
   completeWork(): void {
     this.globalState.completeWork();
+    this.globalState.selectedUser('');
+    this.globalState.selectedWork('未確認');
     console.log('作業A完了');
   }
 

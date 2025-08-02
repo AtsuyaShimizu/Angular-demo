@@ -68,6 +68,7 @@ export class DemoPage {
 
   onComplete() {
     this.currentService()?.completeWork();
+    this.currentService.set(this.serviceDefault);
   }
 
   onCancel() {
