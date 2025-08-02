@@ -2,7 +2,7 @@
   <aside class="select-side">
     <div class="dropdown-group">
       <label class="dropdown-label" for="userSelect">ユーザー選択</label>
-      <select id="userSelect" [value]="globalState.userName()" (change)="onSelectUser($event)">
+      <select id="userSelect" [value]="globalState.userName()" (change)="onSelectUser($event)" [disabled]="!localState.isEnableSelectUser()">
         @for (user of userList; track user; let i = $index) {
           <option [value]="user">{{ user }}</option>
         }
@@ -10,7 +10,7 @@
     </div>
     <div class="dropdown-group">
       <label class="dropdown-label" for="workSelect">作業選択</label>
-      <select id="workSelect" [value]="globalState.workKind()" (change)="onSelectWork($event)">
+      <select id="workSelect" [value]="globalState.workKind()" (change)="onSelectWork($event)" [disabled]="!localState.isEnableSelectWork()">
         @for (work of workList; track work; let i = $index) {
           <option [value]="work">{{ work }}</option>
         }
@@ -37,8 +37,9 @@
       >
         キャンセル
       </button>
-      <button 
-        class="action-btn execute" 
+      <button
+        class="action-btn execute"
+        [disabled]="!localState.isEnableExecute()"
         (click)="onClickExecuteBtn()"
       >
         実行

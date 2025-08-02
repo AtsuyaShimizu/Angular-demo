@@ -6,8 +6,23 @@ import { Component, computed, effect, EventEmitter, Input, Output, signal, Signa
   styleUrls: ['./demo-view.scss']
 })
 export class DemoView {
-  @Input() globalState!: { workKind: Signal<string>, userName: Signal<string> };
-  @Input() localState!: { isEnableComplete: Signal<boolean>, isEnableCancel: Signal<boolean> };
+  @Input() globalState: { workKind: Signal<string>; userName: Signal<string> } = {
+    workKind: signal(''),
+    userName: signal('')
+  };
+  @Input() localState: {
+    isEnableComplete: Signal<boolean>;
+    isEnableCancel: Signal<boolean>;
+    isEnableExecute: Signal<boolean>;
+    isEnableSelectUser: Signal<boolean>;
+    isEnableSelectWork: Signal<boolean>;
+  } = {
+    isEnableComplete: signal(false),
+    isEnableCancel: signal(false),
+    isEnableExecute: signal(false),
+    isEnableSelectUser: signal(false),
+    isEnableSelectWork: signal(false)
+  };
   @Input() userList: string[] = [];
   @Input() workList: string[] = [];
 

@@ -30,8 +30,11 @@ export class DemoPage {
     userName: signal('')
   };
   localState = {
-    isEnableComplete: signal(false),
-    isEnableCancel:  signal(false)
+    isEnableComplete:   signal(false),
+    isEnableCancel:     signal(false),
+    isEnableExecute:    signal(false),
+    isEnableSelectUser: signal(false),
+    isEnableSelectWork: signal(false)
   };
 
   // 「今のサービス」を保持する Signal。最初は undefined でOK。
@@ -52,8 +55,11 @@ export class DemoPage {
         if (!svc) return;
         this.globalState.workKind.set( svc.globalState.workKind() );
         this.globalState.userName .set( svc.globalState.userName() );
-        this.localState.isEnableComplete.set( svc.localState.isEnableComplete() );
-        this.localState.isEnableCancel .set( svc.localState.isEnableCancel() );
+        this.localState.isEnableComplete  .set( svc.localState.isEnableComplete() );
+        this.localState.isEnableCancel    .set( svc.localState.isEnableCancel() );
+        this.localState.isEnableExecute   .set( svc.localState.isEnableExecute() );
+        this.localState.isEnableSelectUser.set( svc.localState.isEnableSelectUser() );
+        this.localState.isEnableSelectWork.set( svc.localState.isEnableSelectWork() );
       });
     });
   }

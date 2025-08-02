@@ -9,11 +9,23 @@ export class DemoLocalStateDefault implements DemoLocalState {
 
   private _isEnableComplete = signal(false);
   private _isEnableCancel   = signal(false);
+  private _isEnableExecute  = signal(false);
+  private _isEnableSelectUser = signal(true);
+  private _isEnableSelectWork = signal(true);
 
   get isEnableComplete(): Signal<boolean> {
     return this._isEnableComplete;
   }
   get isEnableCancel(): Signal<boolean> {
     return this._isEnableCancel;
+  }
+  get isEnableExecute(): Signal<boolean> {
+    return this._isEnableExecute;
+  }
+  get isEnableSelectUser(): Signal<boolean> {
+    return this._isEnableSelectUser;
+  }
+  get isEnableSelectWork(): Signal<boolean> {
+    return this._isEnableSelectWork;
   }
 }
