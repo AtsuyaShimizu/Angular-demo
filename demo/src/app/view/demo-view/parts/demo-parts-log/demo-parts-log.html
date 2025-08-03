@@ -18,7 +18,10 @@
             <td>{{ item.work }}</td>
             <td>{{ item.action }}</td>
             <td>{{ item.user }}</td>
-            <td>{{ item.timestamp }}</td>
+            <td>
+              {{ item.timestamp }}
+              <button class="log-close" (click)="remove(i)">×</button>
+            </td>
           </tr>
         }
       </tbody>
