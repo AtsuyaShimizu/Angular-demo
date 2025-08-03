@@ -1,22 +1,28 @@
 <div class="demo-container">
-  <app-demo-parts-select
-    [globalState]="globalState"
-    [localState]="localState"
-    [userList]="userList"
-    [workList]="workList"
-    (select_user)="select_user.emit($event)"
-    (select_work)="select_work.emit($event)"
-  ></app-demo-parts-select>
-
-  <app-demo-parts-center
-    [globalState]="globalState"
-    [localState]="localState"
-    (click_complete_event)="click_complete_event.emit()"
-    (click_cancel_event)="click_cancel_event.emit()"
-    (click_execute_event)="click_execute_event.emit()"
-  ></app-demo-parts-center>
-
-  <app-demo-parts-log></app-demo-parts-log>
+  <div class="top-area">
+    <div class="top-left">
+      <app-demo-parts-select
+        [globalState]="globalState"
+        [localState]="localState"
+        [userList]="userList"
+        [workList]="workList"
+        (select_user)="select_user.emit($event)"
+        (select_work)="select_work.emit($event)"
+      ></app-demo-parts-select>
+    </div>
+    <div class="top-right">
+      <app-demo-parts-center
+        [globalState]="globalState"
+        [localState]="localState"
+        (click_complete_event)="click_complete_event.emit()"
+        (click_cancel_event)="click_cancel_event.emit()"
+        (click_execute_event)="click_execute_event.emit()"
+      ></app-demo-parts-center>
+    </div>
+  </div>
+  <div class="bottom-area">
+    <app-demo-parts-log></app-demo-parts-log>
+  </div>
 
   @if (localState.isVisibleDialog()) {
     <app-demo-parts-dialog
