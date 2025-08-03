@@ -17,7 +17,12 @@ export class DemoServiceImplC implements DemoServiceInterface {
     }
     console.log('作業C実行');
     this.globalState.updateProgress(count);
-    this.globalState.addLog(this.globalState.workKind(), '実行', this.globalState.userName());
+    this.globalState.addLog(
+      this.globalState.workKind(),
+      '実行',
+      this.globalState.userName(),
+      count
+    );
     this.localState.setDialogVisible(false);
   }
 
