@@ -1,9 +1,16 @@
+:host {
+  display: block;
+  width: 35%;
+  flex: 0 0 35%;
+  box-sizing: border-box;
+}
+
 .center-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 35vw;
-  flex: 0 0 35vw;
+  width: 100%;
+  flex: 1 1 auto;
 }
 
 .message {
@@ -70,9 +77,12 @@
 }
 
 @media (max-width: 900px) {
-  .center-content {
+  :host {
     width: 100%;
     flex: 1 1 auto;
+  }
+  .center-content {
+    width: 100%;
     margin-bottom: 2rem;
   }
 }
