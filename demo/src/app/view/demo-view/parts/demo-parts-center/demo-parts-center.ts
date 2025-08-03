@@ -16,19 +16,19 @@ export class DemoPartsCenter {
     isEnableCancel: Signal<boolean>;
     isEnableExecute: Signal<boolean>;
     isVisibleDialog: Signal<boolean>;
-    isDisablePlus: Signal<boolean>;
-    isDisableMinus: Signal<boolean>;
-    isDisableDecide: Signal<boolean>;
-    isDisableBack: Signal<boolean>;
+    isEnablePlus: Signal<boolean>;
+    isEnableMinus: Signal<boolean>;
+    isEnableDecide: Signal<boolean>;
+    isEnableBack: Signal<boolean>;
   } = {
     isEnableComplete: signal(false),
     isEnableCancel: signal(false),
     isEnableExecute: signal(false),
     isVisibleDialog: signal(false),
-    isDisablePlus: signal(false),
-    isDisableMinus: signal(false),
-    isDisableDecide: signal(false),
-    isDisableBack: signal(false)
+    isEnablePlus: signal(true),
+    isEnableMinus: signal(true),
+    isEnableDecide: signal(true),
+    isEnableBack: signal(true)
   };
 
   @Output() click_complete_event = new EventEmitter<void>();
