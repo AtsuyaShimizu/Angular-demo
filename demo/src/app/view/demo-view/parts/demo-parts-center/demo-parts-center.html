@@ -29,20 +29,22 @@
     </button>
   </div>
 
-  <div class="dialog-overlay" *ngIf="localState.isVisibleDialog()">
-    <div class="dialog">
-      <div class="dialog-content">
-        <span>作業数：</span>
-        <div class="count-box">
-          <button (click)="onClickPlusBtn()" [disabled]="localState.isDisablePlus()">+</button>
-          <div class="count-display">{{ workCount }}</div>
-          <button (click)="onClickMinusBtn()" [disabled]="localState.isDisableMinus()">-</button>
+  @if (localState.isVisibleDialog()) {
+    <div class="dialog-overlay">
+      <div class="dialog">
+        <div class="dialog-content">
+          <span>作業数：</span>
+          <div class="count-box">
+            <button (click)="onClickPlusBtn()" [disabled]="localState.isDisablePlus()">+</button>
+            <div class="count-display">{{ workCount }}</div>
+            <button (click)="onClickMinusBtn()" [disabled]="localState.isDisableMinus()">-</button>
+          </div>
+        </div>
+        <div class="dialog-actions">
+          <button (click)="onClickDecideBtn()" [disabled]="localState.isDisableDecide()">決定</button>
+          <button (click)="onClickBackBtn()" [disabled]="localState.isDisableBack()">戻る</button>
         </div>
       </div>
-      <div class="dialog-actions">
-        <button (click)="onClickDecideBtn()" [disabled]="localState.isDisableDecide()">決定</button>
-        <button (click)="onClickBackBtn()" [disabled]="localState.isDisableBack()">戻る</button>
-      </div>
     </div>
-  </div>
+  }
 </div>
