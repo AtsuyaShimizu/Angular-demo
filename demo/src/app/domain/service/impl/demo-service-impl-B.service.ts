@@ -43,6 +43,10 @@ export class DemoServiceImplB implements DemoServiceInterface {
     console.log('作業変更:', kind);
   }
 
+  deleteLog(index: number): void {
+    this.globalState.deleteLog(index);
+  }
+
   backWork(): void {
     // ダイアログを表示しないため何もしない
   }

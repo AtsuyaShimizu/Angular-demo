@@ -13,6 +13,7 @@ import { DemoServiceImplB } from '../../domain/service/impl/demo-service-impl-B.
 import { DemoServiceImplDefault } from '../../domain/service/impl/demo-service-impl-default.service';
 import { DemoServiceImplC } from '../../domain/service/impl/demo-service-impl-C.service';
 import { DemoView } from '../../view/demo-view/demo-view';
+import { DemoLog } from '../../domain/state/global/demo-global.state';
 
 @Component({
   selector: 'app-demo-page',
@@ -29,7 +30,8 @@ export class DemoPage {
   globalState = {
     workKind: signal(''),
     userName: signal(''),
-    progress: signal(0)
+    progress: signal(0),
+    logs: signal<DemoLog[]>([])
   };
   localState = {
     isEnableComplete:   signal(false),
@@ -64,6 +66,7 @@ export class DemoPage {
         this.globalState.workKind         .set( svc.globalState.workKind() );
         this.globalState.userName         .set( svc.globalState.userName() );
         this.globalState.progress         .set( svc.globalState.progress() );
+        this.globalState.logs             .set( svc.globalState.logs() );
         this.localState.isEnableComplete  .set( svc.localState.isEnableComplete() );
         this.localState.isEnableCancel    .set( svc.localState.isEnableCancel() );
         this.localState.isEnableExecute   .set( svc.localState.isEnableExecute() );
@@ -98,6 +101,10 @@ export class DemoPage {
 
   onBack() {
     this.currentService()?.backWork();
+  }
+
+  onRemoveLog(index: number) {
+    this.currentService()?.deleteLog(index);
   }
 
   onSelectUser(user: string) {

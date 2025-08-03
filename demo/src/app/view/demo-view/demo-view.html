@@ -23,7 +23,10 @@
   </div>
 
   <div class="bottom-area">
-    <app-demo-parts-log></app-demo-parts-log>
+    <app-demo-parts-log
+      [log]="globalState.logs"
+      (remove_log)="remove_log.emit($event)"
+    ></app-demo-parts-log>
   </div>
 
   @if (localState.isVisibleDialog()) {

@@ -42,6 +42,10 @@ export class DemoServiceImplDefault implements DemoServiceInterface {
     console.log('作業' + kind + 'が選択されました。');
   }
 
+  deleteLog(index: number): void {
+    this.globalState.deleteLog(index);
+  }
+
   backWork(): void {
     // ダイアログを表示しないため何もしない
   }

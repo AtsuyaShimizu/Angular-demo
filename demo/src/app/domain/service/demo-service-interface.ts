@@ -10,5 +10,6 @@ export interface DemoServiceInterface {
   cancelWork()  : void;
   selectWork(work: string)  : void;
   selectUser(user: string)  : void;
+  deleteLog(index: number) : void;
   backWork(): void;
 }

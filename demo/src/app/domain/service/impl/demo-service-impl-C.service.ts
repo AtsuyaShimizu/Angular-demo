@@ -48,6 +48,10 @@ export class DemoServiceImplC implements DemoServiceInterface {
     console.log('作業変更:', kind);
   }
 
+  deleteLog(index: number): void {
+    this.globalState.deleteLog(index);
+  }
+
   backWork(): void {
     this.localState.setDialogVisible(false);
   }
