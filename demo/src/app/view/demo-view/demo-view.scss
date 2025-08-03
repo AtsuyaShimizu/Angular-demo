@@ -1,22 +1,30 @@
 .demo-container {
-  display: flex;
-  flex-direction: row-reverse;
+  display: grid;
+  grid-template-rows: 30% 70%;
   height: 100vh;
   width: 100vw;
   box-sizing: border-box;
-  justify-content: flex-start;
-  align-items: stretch;
   background: linear-gradient(110deg, #f7fafc 60%, #e3e9f3 100%);
   font-family: 'Segoe UI', 'Noto Sans JP', 'Roboto', sans-serif;
   position: relative;
 }
 
-@media (max-width: 900px) {
-  .demo-container {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    height: 100vh;
-    padding: 1rem;
-  }
+.top-area {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.top-left,
+.top-right,
+.bottom-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-left app-demo-parts-select,
+.top-right app-demo-parts-center,
+.bottom-area app-demo-parts-log {
+  width: 97%;
+  height: 95%;
 }
