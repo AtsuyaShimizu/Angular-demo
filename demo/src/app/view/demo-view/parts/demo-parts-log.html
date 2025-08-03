@@ -1,25 +1,27 @@
 <aside class="log-side">
   <div class="log-title">変更履歴</div>
-  <table class="log-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>作業</th>
-        <th>処理</th>
-        <th>ユーザ</th>
-        <th>日時</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of log(); track $index; let i = $index) {
+  <div class="log-table-wrapper">
+    <table class="log-table">
+      <thead>
         <tr>
-          <td>{{ i + 1 }}</td>
-          <td>{{ item.work }}</td>
-          <td>{{ item.action }}</td>
-          <td>{{ item.user }}</td>
-          <td>{{ item.timestamp }}</td>
+          <th>#</th>
+          <th>作業</th>
+          <th>処理</th>
+          <th>ユーザ</th>
+          <th>日時</th>
         </tr>
-      }
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @for (item of log(); track $index; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.work }}</td>
+            <td>{{ item.action }}</td>
+            <td>{{ item.user }}</td>
+            <td>{{ item.timestamp }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
 </aside>
