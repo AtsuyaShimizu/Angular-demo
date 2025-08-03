@@ -7,13 +7,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .dialog {
   background: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 32rem;
+  max-width: 90%;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .count-box {
@@ -23,9 +27,40 @@
   margin-left: 0.5rem;
 }
 
+.count-box button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #1976d2;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.count-display {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
 .dialog-actions {
   margin-top: 1rem;
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+}
+
+.dialog-actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #1976d2;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.dialog button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
