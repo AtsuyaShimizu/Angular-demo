@@ -15,16 +15,31 @@
 }
 
 .top-left,
-.top-right,
-.bottom-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.top-right {
+  display: grid;
+  place-items: center; /* 縦横中央揃え */
 }
 
+.bottom-area {
+  display: grid;
+  justify-items: center; /* 横中央揃え */
+  align-items: start;    /* 縦方向は上揃えにする */
+}
+
+
 .top-left app-demo-parts-select,
-.top-right app-demo-parts-center,
-.bottom-area app-demo-parts-log {
+.top-right app-demo-parts-center {
   width: 97%;
   height: 95%;
 }
+
+.bottom-area app-demo-parts-log {
+  width: 97%;
+  height: 90%;
+}
+
+
+.demo-container, .top-area, .bottom-area, .top-left, .top-right {
+  overflow: hidden; /* 追加で内容が外側に漏れないようにする */
+}
+
