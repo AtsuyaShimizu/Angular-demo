@@ -28,12 +28,4 @@
       実行
     </button>
   </div>
-
-  @if (localState.isVisibleDialog()) {
-    <app-demo-parts-dialog
-      [localState]="localState"
-      (click_decide_event)="click_decide_event.emit($event)"
-      (click_back_event)="click_back_event.emit()"
-    />
-  }
 </div>
