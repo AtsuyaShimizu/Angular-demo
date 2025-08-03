@@ -14,9 +14,15 @@
     (click_complete_event)="click_complete_event.emit()"
     (click_cancel_event)="click_cancel_event.emit()"
     (click_execute_event)="click_execute_event.emit()"
-    (click_decide_event)="click_decide_event.emit($event)"
-    (click_back_event)="click_back_event.emit()"
   ></app-demo-parts-center>
 
   <app-demo-parts-log></app-demo-parts-log>
+
+  @if (localState.isVisibleDialog()) {
+    <app-demo-parts-dialog
+      [localState]="localState"
+      (click_decide_event)="click_decide_event.emit($event)"
+      (click_back_event)="click_back_event.emit()"
+    />
+  }
 </div>
