@@ -14,9 +14,9 @@ export class DemoServiceImplA implements DemoServiceInterface {
     public readonly localState: DemoLocalStateA
   ) {}
 
-  executeWork(): void {
+  executeWork(count: number): void {
     console.log('作業A実行');
-    this.globalState.updateProgress();
+    this.globalState.updateProgress(count);
     this.globalState.addLog(this.globalState.workKind(), '実行', this.globalState.userName());
   }
 
@@ -45,5 +45,9 @@ export class DemoServiceImplA implements DemoServiceInterface {
     this.globalState.selectedWork(kind);
     this.globalState.addLog(kind, '選択', this.globalState.userName());
     console.log('作業変更:', kind);
+  }
+
+  backWork(): void {
+    // ダイアログを表示しないため何もしない
   }
 }

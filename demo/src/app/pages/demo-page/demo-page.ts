@@ -11,6 +11,7 @@ import { DemoServiceInterface } from '../../domain/service/demo-service-interfac
 import { DemoServiceImplA } from '../../domain/service/impl/demo-service-impl-A.service';
 import { DemoServiceImplB } from '../../domain/service/impl/demo-service-impl-B.service';
 import { DemoServiceImplDefault } from '../../domain/service/impl/demo-service-impl-default.service';
+import { DemoServiceImplC } from '../../domain/service/impl/demo-service-impl-C.service';
 import { DemoView } from '../../view/demo-view/demo-view';
 
 @Component({
@@ -21,7 +22,7 @@ import { DemoView } from '../../view/demo-view/demo-view';
   styleUrls: ['./demo-page.scss']
 })
 export class DemoPage {
-  workList = ['作業A', '作業B'];
+  workList = ['作業A', '作業B', '作業C'];
   userList = ['Aoki', 'Yamada', 'Suzuki', 'Tanaka'];
 
   // 子に渡す中継シグナル
@@ -35,7 +36,12 @@ export class DemoPage {
     isEnableCancel:     signal(false),
     isEnableExecute:    signal(false),
     isEnableSelectUser: signal(false),
-    isEnableSelectWork: signal(false)
+    isEnableSelectWork: signal(false),
+    isVisibleDialog:    signal(false),
+    isDisablePlus:      signal(false),
+    isDisableMinus:     signal(false),
+    isDisableDecide:    signal(false),
+    isDisableBack:      signal(false)
   };
 
   // 「今のサービス」を保持する Signal。最初は undefined でOK。
@@ -45,6 +51,7 @@ export class DemoPage {
   private serviceDefault = inject(DemoServiceImplDefault);
   private serviceA       = inject(DemoServiceImplA);
   private serviceB       = inject(DemoServiceImplB);
+  private serviceC       = inject(DemoServiceImplC);
   private injector       = inject(EnvironmentInjector);
 
   constructor() {
@@ -62,6 +69,11 @@ export class DemoPage {
         this.localState.isEnableExecute   .set( svc.localState.isEnableExecute() );
         this.localState.isEnableSelectUser.set( svc.localState.isEnableSelectUser() );
         this.localState.isEnableSelectWork.set( svc.localState.isEnableSelectWork() );
+        this.localState.isVisibleDialog   .set( svc.localState.isVisibleDialog() );
+        this.localState.isDisablePlus     .set( svc.localState.isDisablePlus() );
+        this.localState.isDisableMinus    .set( svc.localState.isDisableMinus() );
+        this.localState.isDisableDecide   .set( svc.localState.isDisableDecide() );
+        this.localState.isDisableBack     .set( svc.localState.isDisableBack() );
       });
     });
   }
@@ -77,7 +89,15 @@ export class DemoPage {
   }
 
   onExecute() {
-    this.currentService()?.executeWork();
+    this.currentService()?.executeWork(1);
+  }
+
+  onDecide(count: number) {
+    this.currentService()?.executeWork(count);
+  }
+
+  onBack() {
+    this.currentService()?.backWork();
   }
 
   onSelectUser(user: string) {
@@ -90,7 +110,9 @@ export class DemoPage {
       ? this.serviceA
       : work === '作業B'
         ? this.serviceB
-        : this.serviceDefault;
+        : work === '作業C'
+          ? this.serviceC
+          : this.serviceDefault;
     this.currentService.set(next);
     next.selectWork(work);
   }

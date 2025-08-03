@@ -1,19 +1,24 @@
-import { Injectable } from "@angular/core";
-import { DemoState } from "../../state/global/demo-global.state";
-import { DemoLocalStateB } from "../../state/local/demo-local-B.state";
-import { DemoServiceInterface } from "../demo-service-interface";
+import { Injectable } from '@angular/core';
+import { DemoState } from '../../state/global/demo-global.state';
+import { DemoLocalStateC } from '../../state/local/demo-local-C.state';
+import { DemoServiceInterface } from '../demo-service-interface';
 
 @Injectable({ providedIn: 'root' })
-export class DemoServiceImplB implements DemoServiceInterface {
+export class DemoServiceImplC implements DemoServiceInterface {
   constructor(
     public readonly globalState: DemoState,
-    public readonly localState: DemoLocalStateB
+    public readonly localState: DemoLocalStateC
   ) {}
 
   executeWork(count: number): void {
-    console.log('作業B実行');
+    if (!this.localState.isVisibleDialog()) {
+      this.localState.setDialogVisible(true);
+      return;
+    }
+    console.log('作業C実行');
     this.globalState.updateProgress(count);
     this.globalState.addLog(this.globalState.workKind(), '実行', this.globalState.userName());
+    this.localState.setDialogVisible(false);
   }
 
   completeWork(): void {
@@ -21,7 +26,7 @@ export class DemoServiceImplB implements DemoServiceInterface {
     this.globalState.completeWork();
     this.globalState.selectedUser('');
     this.globalState.selectedWork('未確認');
-    console.log('作業B完了');
+    console.log('作業C完了');
   }
 
   cancelWork(): void {
@@ -29,7 +34,7 @@ export class DemoServiceImplB implements DemoServiceInterface {
     this.globalState.completeWork();
     this.globalState.selectedUser('');
     this.globalState.selectedWork('未確認');
-    console.log('作業Bキャンセル');
+    console.log('作業Cキャンセル');
   }
 
   selectUser(name: string): void {
@@ -44,6 +49,6 @@ export class DemoServiceImplB implements DemoServiceInterface {
   }
 
   backWork(): void {
-    // ダイアログを表示しないため何もしない
+    this.localState.setDialogVisible(false);
   }
 }
