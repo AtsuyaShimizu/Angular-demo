@@ -44,8 +44,8 @@ export class DemoState {
       user,
       timestamp: this.getTimestamp()
     };
-    const newLogs = [...this._logs(), entry];
-    if (newLogs.length > 20) newLogs.shift();
+    const newLogs = [entry, ...this._logs()];
+    if (newLogs.length > 20) newLogs.pop();
     this._logs.set(newLogs);
   }
 
