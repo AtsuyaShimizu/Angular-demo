@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { DemoState } from '../../../../domain/state/global/demo-global.state';
+import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { DemoLog } from '../../../../domain/state/global/demo-global.state';
 
 @Component({
   selector: 'app-demo-parts-log',
@@ -8,10 +8,10 @@ import { DemoState } from '../../../../domain/state/global/demo-global.state';
   styleUrls: ['./demo-parts-log.scss']
 })
 export class DemoPartsLog {
-  private demoState = inject(DemoState);
-  log = this.demoState.logs;
+  @Input() log: Signal<DemoLog[]> = signal([]);
+  @Output() remove_log = new EventEmitter<number>();
 
   remove(index: number) {
-    this.demoState.deleteLog(index);
+    this.remove_log.emit(index);
   }
 }

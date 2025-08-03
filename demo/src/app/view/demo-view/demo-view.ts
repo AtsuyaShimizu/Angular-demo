@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { DemoLog } from '../../domain/state/global/demo-global.state';
 import { DemoPartsSelect } from './parts/demo-parts-select/demo-parts-select';
 import { DemoPartsCenter } from './parts/demo-parts-center/demo-parts-center';
 import { DemoPartsLog } from './parts/demo-parts-log/demo-parts-log';
@@ -16,10 +17,12 @@ export class DemoView {
     workKind: Signal<string>;
     userName: Signal<string>;
     progress: Signal<number>;
+    logs: Signal<DemoLog[]>;
   } = {
     workKind: signal(''),
     userName: signal(''),
     progress: signal(0),
+    logs: signal([]),
   };
   @Input() localState: {
     isEnableComplete: Signal<boolean>;
@@ -54,5 +57,6 @@ export class DemoView {
   @Output() click_back_event     = new EventEmitter<void>();
   @Output() select_work          = new EventEmitter<string>();
   @Output() select_user          = new EventEmitter<string>();
+  @Output() remove_log           = new EventEmitter<number>();
 
 }
