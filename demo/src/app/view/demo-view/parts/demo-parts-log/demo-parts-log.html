@@ -8,6 +8,8 @@
           <th>作業</th>
           <th>処理</th>
           <th>ユーザ</th>
+          <th>作業数</th>
+          <th>完了数</th>
           <th>日時</th>
         </tr>
       </thead>
@@ -18,6 +20,8 @@
             <td>{{ item.work }}</td>
             <td>{{ item.action }}</td>
             <td>{{ item.user }}</td>
+            <td>{{ item.workCount }}</td>
+            <td>{{ item.completeCount }}</td>
             <td>
               {{ item.timestamp }}
               <button class="log-close" (click)="remove(i)">×</button>
