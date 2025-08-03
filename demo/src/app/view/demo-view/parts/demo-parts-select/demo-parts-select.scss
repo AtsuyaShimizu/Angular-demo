@@ -1,7 +1,12 @@
+:host {
+  display: block;
+  width: 20%;
+  flex: 0 0 20%;
+  box-sizing: border-box;
+}
+
 .select-side {
-  width: 250px;
-  flex: 0 0 250px;
-  margin-right: 3vw;
+  width: 100%;
   background: #fff;
   border-radius: 1.4rem;
   box-shadow: 0 4px 16px 0 rgba(80,90,110,0.11);
@@ -45,6 +50,10 @@ select {
 }
 
 @media (max-width: 900px) {
+  :host {
+    width: 100%;
+    flex: 1 1 auto;
+  }
   .select-side {
     margin-right: 0;
     margin-bottom: 2rem;
