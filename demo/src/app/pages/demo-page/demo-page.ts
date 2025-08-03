@@ -61,9 +61,9 @@ export class DemoPage {
       effect(() => {
         const svc = this.currentService();
         if (!svc) return;
-        this.globalState.workKind.set( svc.globalState.workKind() );
-        this.globalState.userName .set( svc.globalState.userName() );
-        this.globalState.progress.set( svc.globalState.progress() );
+        this.globalState.workKind         .set( svc.globalState.workKind() );
+        this.globalState.userName         .set( svc.globalState.userName() );
+        this.globalState.progress         .set( svc.globalState.progress() );
         this.localState.isEnableComplete  .set( svc.localState.isEnableComplete() );
         this.localState.isEnableCancel    .set( svc.localState.isEnableCancel() );
         this.localState.isEnableExecute   .set( svc.localState.isEnableExecute() );
