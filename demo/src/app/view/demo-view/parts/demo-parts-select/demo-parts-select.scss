@@ -34,6 +34,12 @@ select {
   &:focus {
     border: 1.5px solid #43e97b;
   }
+  &:disabled {
+    background: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
 }
 
 @media (max-width: 900px) {

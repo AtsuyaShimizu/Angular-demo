@@ -18,6 +18,19 @@
   text-align: center;
 }
 
+.progress {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+  color: #222f3e;
+  background: #fff;
+  padding: 1.7rem 2.7rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 14px 0 rgba(60,70,120,0.13);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
 .btn-group {
   display: flex;
   gap: 2.2rem;
