@@ -1,0 +1,16 @@
+<div class="dialog-overlay">
+  <div class="dialog">
+    <div class="dialog-content">
+      <span>作業数：</span>
+      <div class="count-box">
+        <button (click)="onClickPlusBtn()" [disabled]="!localState.isEnablePlus()">+</button>
+        <div class="count-display">{{ workCount }}</div>
+        <button (click)="onClickMinusBtn()" [disabled]="!localState.isEnableMinus()">-</button>
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button (click)="onClickDecideBtn()" [disabled]="!localState.isEnableDecide()">決定</button>
+      <button (click)="onClickBackBtn()" [disabled]="!localState.isEnableBack()">戻る</button>
+    </div>
+  </div>
+</div>

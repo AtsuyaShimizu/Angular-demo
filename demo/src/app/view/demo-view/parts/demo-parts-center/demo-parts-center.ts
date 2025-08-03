@@ -1,10 +1,12 @@
 import { Component, EventEmitter, Input, Output, Signal, computed, signal } from '@angular/core';
+import { DemoPartsDialog } from '../demo-parts-dialog/demo-parts-dialog';
 
 @Component({
   selector: 'app-demo-parts-center',
   standalone: true,
   templateUrl: './demo-parts-center.html',
-  styleUrls: ['./demo-parts-center.scss']
+  styleUrls: ['./demo-parts-center.scss'],
+  imports: [DemoPartsDialog]
 })
 export class DemoPartsCenter {
   @Input() globalState: { workKind: Signal<string>; progress: Signal<number> } = {
@@ -45,8 +47,6 @@ export class DemoPartsCenter {
     `完了数：${this.globalState?.progress()}`
   );
 
-  workCount = 1;
-
   onClickCompleteBtn() {
     this.click_complete_event.emit();
   }
@@ -57,23 +57,5 @@ export class DemoPartsCenter {
 
   onClickExecuteBtn() {
     this.click_execute_event.emit();
-  }
-
-  onClickPlusBtn() {
-    this.workCount++;
-  }
-
-  onClickMinusBtn() {
-    if (this.workCount > 1) this.workCount--;
-  }
-
-  onClickDecideBtn() {
-    this.click_decide_event.emit(this.workCount);
-    this.workCount = 1;
-  }
-
-  onClickBackBtn() {
-    this.click_back_event.emit();
-    this.workCount = 1;
   }
 }
