@@ -28,8 +28,8 @@ export class DemoState {
     return this._logs;
   }
 
-  updateProgress() {
-    const newProgress: number = this._progress() + 1;
+  updateProgress(count: number) {
+    const newProgress: number = this._progress() + count;
     this._progress.set(newProgress);
   }
 

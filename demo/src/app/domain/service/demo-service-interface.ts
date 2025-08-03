@@ -5,9 +5,10 @@ export interface DemoServiceInterface {
   readonly globalState: DemoState;
   readonly localState : DemoLocalState;
 
-  executeWork() : void;
+  executeWork(count: number) : void;
   completeWork(): void;
   cancelWork()  : void;
   selectWork(work: string)  : void;
   selectUser(user: string)  : void;
+  backWork(): void;
 }

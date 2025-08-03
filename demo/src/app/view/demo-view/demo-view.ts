@@ -26,12 +26,22 @@ export class DemoView {
     isEnableExecute: Signal<boolean>;
     isEnableSelectUser: Signal<boolean>;
     isEnableSelectWork: Signal<boolean>;
+    isVisibleDialog: Signal<boolean>;
+    isDisablePlus: Signal<boolean>;
+    isDisableMinus: Signal<boolean>;
+    isDisableDecide: Signal<boolean>;
+    isDisableBack: Signal<boolean>;
   } = {
     isEnableComplete: signal(false),
     isEnableCancel: signal(false),
     isEnableExecute: signal(false),
     isEnableSelectUser: signal(false),
-    isEnableSelectWork: signal(false)
+    isEnableSelectWork: signal(false),
+    isVisibleDialog: signal(false),
+    isDisablePlus: signal(false),
+    isDisableMinus: signal(false),
+    isDisableDecide: signal(false),
+    isDisableBack: signal(false)
   };
   @Input() userList: string[] = [];
   @Input() workList: string[] = [];
@@ -39,6 +49,8 @@ export class DemoView {
   @Output() click_complete_event = new EventEmitter<void>();
   @Output() click_cancel_event   = new EventEmitter<void>();
   @Output() click_execute_event  = new EventEmitter<void>();
+  @Output() click_decide_event   = new EventEmitter<number>();
+  @Output() click_back_event     = new EventEmitter<void>();
   @Output() select_work          = new EventEmitter<string>();
   @Output() select_user          = new EventEmitter<string>();
 

@@ -10,7 +10,7 @@ export class DemoServiceImplDefault implements DemoServiceInterface {
     public readonly localState: DemoLocalStateDefault
   ) {}
 
-  executeWork(): void {
+  executeWork(_count: number): void {
     this.globalState.addLog(this.globalState.workKind(), '実行', this.globalState.userName());
     console.log('作業未選択のため何もしない。');
   }
@@ -40,5 +40,9 @@ export class DemoServiceImplDefault implements DemoServiceInterface {
     this.globalState.selectedWork(kind);
     this.globalState.addLog(kind, '選択', this.globalState.userName());
     console.log('作業' + kind + 'が選択されました。');
+  }
+
+  backWork(): void {
+    // ダイアログを表示しないため何もしない
   }
 }
