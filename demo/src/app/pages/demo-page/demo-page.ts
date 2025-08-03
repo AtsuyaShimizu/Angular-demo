@@ -38,10 +38,10 @@ export class DemoPage {
     isEnableSelectUser: signal(false),
     isEnableSelectWork: signal(false),
     isVisibleDialog:    signal(false),
-    isEnablePlus:      signal(true),
-    isEnableMinus:     signal(true),
-    isEnableDecide:    signal(true),
-    isEnableBack:      signal(true)
+    isEnablePlus:       signal(true),
+    isEnableMinus:      signal(true),
+    isEnableDecide:     signal(true),
+    isEnableBack:       signal(true)
   };
 
   // 「今のサービス」を保持する Signal。最初は undefined でOK。
@@ -70,10 +70,10 @@ export class DemoPage {
         this.localState.isEnableSelectUser.set( svc.localState.isEnableSelectUser() );
         this.localState.isEnableSelectWork.set( svc.localState.isEnableSelectWork() );
         this.localState.isVisibleDialog   .set( svc.localState.isVisibleDialog() );
-        this.localState.isEnablePlus     .set( svc.localState.isEnablePlus() );
-        this.localState.isEnableMinus    .set( svc.localState.isEnableMinus() );
-        this.localState.isEnableDecide   .set( svc.localState.isEnableDecide() );
-        this.localState.isEnableBack     .set( svc.localState.isEnableBack() );
+        this.localState.isEnablePlus      .set( svc.localState.isEnablePlus() );
+        this.localState.isEnableMinus     .set( svc.localState.isEnableMinus() );
+        this.localState.isEnableDecide    .set( svc.localState.isEnableDecide() );
+        this.localState.isEnableBack      .set( svc.localState.isEnableBack() );
       });
     });
   }

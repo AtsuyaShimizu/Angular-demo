@@ -6,9 +6,9 @@ export interface DemoLocalState {
   readonly isEnableExecute   : Signal<boolean>;
   readonly isEnableSelectUser: Signal<boolean>;
   readonly isEnableSelectWork: Signal<boolean>;
-  readonly isVisibleDialog: Signal<boolean>;
-  readonly isEnablePlus: Signal<boolean>;
-  readonly isEnableMinus: Signal<boolean>;
-  readonly isEnableDecide: Signal<boolean>;
-  readonly isEnableBack: Signal<boolean>;
+  readonly isVisibleDialog   : Signal<boolean>;
+  readonly isEnablePlus      : Signal<boolean>;
+  readonly isEnableMinus     : Signal<boolean>;
+  readonly isEnableDecide    : Signal<boolean>;
+  readonly isEnableBack      : Signal<boolean>;
 }

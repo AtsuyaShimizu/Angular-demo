@@ -13,21 +13,21 @@ export class DemoLocalStateC implements DemoLocalState {
   private _isEnableSelectWork = computed(() => false);
 
   private _isVisibleDialog = signal(false);
-  private _isEnablePlus   = signal(true);
-  private _isEnableMinus  = signal(true);
-  private _isEnableDecide = signal(true);
-  private _isEnableBack   = signal(true);
+  private _isEnablePlus    = signal(true);
+  private _isEnableMinus   = signal(true);
+  private _isEnableDecide  = signal(true);
+  private _isEnableBack    = signal(true);
 
   get isEnableComplete()  : Signal<boolean> { return this._isEnableComplete; }
   get isEnableCancel()    : Signal<boolean> { return this._isEnableCancel; }
   get isEnableExecute()   : Signal<boolean> { return this._isEnableExecute; }
   get isEnableSelectUser(): Signal<boolean> { return this._isEnableSelectUser; }
   get isEnableSelectWork(): Signal<boolean> { return this._isEnableSelectWork; }
-  get isVisibleDialog(): Signal<boolean> { return this._isVisibleDialog; }
-  get isEnablePlus(): Signal<boolean> { return this._isEnablePlus; }
-  get isEnableMinus(): Signal<boolean> { return this._isEnableMinus; }
-  get isEnableDecide(): Signal<boolean> { return this._isEnableDecide; }
-  get isEnableBack(): Signal<boolean> { return this._isEnableBack; }
+  get isVisibleDialog()   : Signal<boolean> { return this._isVisibleDialog; }
+  get isEnablePlus()      : Signal<boolean> { return this._isEnablePlus; }
+  get isEnableMinus()     : Signal<boolean> { return this._isEnableMinus; }
+  get isEnableDecide()    : Signal<boolean> { return this._isEnableDecide; }
+  get isEnableBack()      : Signal<boolean> { return this._isEnableBack; }
 
   setDialogVisible(flag: boolean) {
     this._isVisibleDialog.set(flag);
