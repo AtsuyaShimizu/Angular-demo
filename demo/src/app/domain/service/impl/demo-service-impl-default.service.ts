@@ -11,10 +11,12 @@ export class DemoServiceImplDefault implements DemoServiceInterface {
   ) {}
 
   executeWork(): void {
+    this.globalState.addLog(this.globalState.workKind(), '実行', this.globalState.userName());
     console.log('作業未選択のため何もしない。');
   }
 
   completeWork(): void {
+    this.globalState.addLog(this.globalState.workKind(), '完了', this.globalState.userName());
     this.globalState.completeWork();
     this.globalState.selectedUser('');
     this.globalState.selectedWork('未確認');
@@ -22,6 +24,7 @@ export class DemoServiceImplDefault implements DemoServiceInterface {
   }
 
   cancelWork(): void {
+    this.globalState.addLog(this.globalState.workKind(), 'キャンセル', this.globalState.userName());
     this.globalState.completeWork();
     this.globalState.selectedUser('');
     this.globalState.selectedWork('未確認');
@@ -35,6 +38,7 @@ export class DemoServiceImplDefault implements DemoServiceInterface {
 
   selectWork(kind: string): void {
     this.globalState.selectedWork(kind);
+    this.globalState.addLog(kind, '選択', this.globalState.userName());
     console.log('作業' + kind + 'が選択されました。');
   }
 }

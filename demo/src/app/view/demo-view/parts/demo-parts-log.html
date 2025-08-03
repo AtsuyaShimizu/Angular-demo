@@ -4,14 +4,20 @@
     <thead>
       <tr>
         <th>#</th>
-        <th>内容</th>
+        <th>作業</th>
+        <th>処理</th>
+        <th>ユーザ</th>
+        <th>日時</th>
       </tr>
     </thead>
     <tbody>
-      @for (item of log(); track item; let i = $index) {
+      @for (item of log(); track $index; let i = $index) {
         <tr>
           <td>{{ i + 1 }}</td>
-          <td>{{ item }}</td>
+          <td>{{ item.work }}</td>
+          <td>{{ item.action }}</td>
+          <td>{{ item.user }}</td>
+          <td>{{ item.timestamp }}</td>
         </tr>
       }
     </tbody>

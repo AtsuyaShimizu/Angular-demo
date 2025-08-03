@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { DemoState } from '../../../domain/state/global/demo-global.state';
 
 @Component({
   selector: 'app-demo-parts-log',
@@ -7,5 +8,6 @@ import { Component, signal } from '@angular/core';
   styleUrls: ['./demo-parts-log.scss']
 })
 export class DemoPartsLog {
-  log = signal<string[]>([]);
+  private demoState = inject(DemoState);
+  log = this.demoState.logs;
 }
