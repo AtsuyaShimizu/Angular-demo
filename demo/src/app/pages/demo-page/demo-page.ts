@@ -101,11 +101,34 @@ export class DemoPage {
   }
 
   onSelectUser(user: string) {
-    this.currentService()?.selectUser(user);
+    const svc = this.currentService();
+    svc?.selectUser(user);
+
+    const work = svc?.globalState.workKind();
+    if (!work || work === '未確認') return;
+
+    const next = work === '作業A'
+      ? this.serviceA
+      : work === '作業B'
+        ? this.serviceB
+        : work === '作業C'
+          ? this.serviceC
+          : this.serviceDefault;
+
+    if (next !== this.currentService()) {
+      this.currentService.set(next);
+      next.selectWork(work);
+    }
   }
 
   onSelectWork(work: string) {
-    // サービス切替
+    const svc = this.currentService();
+    const user = svc?.globalState.userName();
+    if (!user) {
+      svc?.selectWork(work);
+      return;
+    }
+
     const next = work === '作業A'
       ? this.serviceA
       : work === '作業B'
