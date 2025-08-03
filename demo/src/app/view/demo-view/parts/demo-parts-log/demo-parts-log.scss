@@ -57,9 +57,31 @@
     border-bottom: 1px solid #edf2f7;
     vertical-align: middle;
     word-break: break-word;
+    position: relative;
   }
   tr:last-child td {
     border-bottom: none;
+  }
+
+  .log-close {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 0.4rem;
+    transform: translateY(-50%);
+    border: none;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    line-height: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  tr:hover .log-close {
+    display: block;
   }
 }
 

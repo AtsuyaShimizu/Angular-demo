@@ -10,4 +10,8 @@ import { DemoState } from '../../../../domain/state/global/demo-global.state';
 export class DemoPartsLog {
   private demoState = inject(DemoState);
   log = this.demoState.logs;
+
+  remove(index: number) {
+    this.demoState.deleteLog(index);
+  }
 }
