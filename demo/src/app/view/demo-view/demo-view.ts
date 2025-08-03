@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
-import { DemoPartsSelect } from './parts/demo-parts-select';
-import { DemoPartsCenter } from './parts/demo-parts-center';
-import { DemoPartsLog } from './parts/demo-parts-log';
+import { DemoPartsSelect } from './parts/demo-parts-select/demo-parts-select';
+import { DemoPartsCenter } from './parts/demo-parts-center/demo-parts-center';
+import { DemoPartsLog } from './parts/demo-parts-log/demo-parts-log';
 
 @Component({
   selector: 'app-demo-view',
