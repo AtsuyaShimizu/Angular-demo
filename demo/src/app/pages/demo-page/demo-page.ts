@@ -73,6 +73,7 @@ export class DemoPage {
 
   onCancel() {
     this.currentService()?.cancelWork();
+    this.currentService.set(this.serviceDefault);
   }
 
   onExecute() {

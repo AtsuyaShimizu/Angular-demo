@@ -27,6 +27,9 @@ export class DemoServiceImplA implements DemoServiceInterface {
   }
 
   cancelWork(): void {
+    this.globalState.completeWork();
+    this.globalState.selectedUser('');
+    this.globalState.selectedWork('未確認');
     console.log('作業Aキャンセル');
   }
 
