@@ -15,8 +15,6 @@ export class DemoState {
   private _userName = signal('');
   private _progress = signal(0);
   private _logs = signal<DemoLog[]>([]);
-  private _workCount = 0;
-  private _completeCount = 0;
 
   get workKind(): Signal<string> {
     return this._workKind;
@@ -41,19 +39,14 @@ export class DemoState {
     this._progress.set(0);
   }
 
-  addLog(work: string, action: string, user: string) {
-    if (action === '実行') {
-      this._workCount++;
-    } else if (action === '完了') {
-      this._completeCount++;
-    }
+  addLog(work: string, action: string, user: string, workCount = 0) {
     const entry: DemoLog = {
       work,
       action,
       user,
       timestamp: this.getTimestamp(),
-      workCount: this._workCount,
-      completeCount: this._completeCount
+      workCount: action === '実行' ? workCount : 0,
+      completeCount: action === '完了' ? this._progress() : 0
     };
     const newLogs = [entry, ...this._logs()];
     if (newLogs.length > 20) newLogs.pop();

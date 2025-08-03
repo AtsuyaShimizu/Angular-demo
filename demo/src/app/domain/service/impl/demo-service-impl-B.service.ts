@@ -13,7 +13,12 @@ export class DemoServiceImplB implements DemoServiceInterface {
   executeWork(count: number): void {
     console.log('作業B実行');
     this.globalState.updateProgress(count);
-    this.globalState.addLog(this.globalState.workKind(), '実行', this.globalState.userName());
+    this.globalState.addLog(
+      this.globalState.workKind(),
+      '実行',
+      this.globalState.userName(),
+      count
+    );
   }
 
   completeWork(): void {
