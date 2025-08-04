@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
 import { DemoLog } from '../../domain/state/global/demo-global.state';
-import { DemoPartsSelect } from './parts/demo-parts-select/demo-parts-select';
-import { DemoPartsCenter } from './parts/demo-parts-center/demo-parts-center';
-import { DemoPartsLog } from './parts/demo-parts-log/demo-parts-log';
-import { DemoPartsDialog } from './parts/demo-parts-dialog/demo-parts-dialog';
+import { DemoPartsSelect } from '../parts/demo-parts-select/demo-parts-select';
+import { DemoPartsCenter } from '../parts/demo-parts-center/demo-parts-center';
+import { DemoPartsLog } from '../parts/demo-parts-log/demo-parts-log';
+import { DemoPartsDialog } from '../parts/demo-parts-dialog/demo-parts-dialog';
 
 @Component({
   selector: 'app-demo-view',
