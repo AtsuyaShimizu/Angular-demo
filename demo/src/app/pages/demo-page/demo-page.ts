@@ -1,11 +1,4 @@
-import {
-  Component,
-  effect,
-  runInInjectionContext,
-  signal,
-  inject,
-  EnvironmentInjector
-} from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { DemoServiceInterface } from '../../domain/service/demo-service-interface';
 import { DemoServiceImplA } from '../../domain/service/impl/demo-service-impl-A.service';
 import { DemoServiceImplB } from '../../domain/service/impl/demo-service-impl-B.service';
@@ -25,26 +18,6 @@ export class DemoPage {
   workList = ['作業A', '作業B', '作業C'];
   userList = ['Aoki', 'Yamada', 'Suzuki', 'Tanaka'];
 
-  // 子に渡す値
-  globalState = {
-    workKind: '',
-    userName: '',
-    progress: 0,
-    logs: [] as DemoLog[],
-  };
-  localState = {
-    isEnableComplete:   false,
-    isEnableCancel:     false,
-    isEnableExecute:    false,
-    isEnableSelectUser: false,
-    isEnableSelectWork: false,
-    isVisibleDialog:    false,
-    isEnablePlus:       true,
-    isEnableMinus:      true,
-    isEnableDecide:     true,
-    isEnableBack:       true,
-  };
-
   // 「今のサービス」を保持する Signal。最初は undefined でOK。
   private currentService = signal<DemoServiceInterface | undefined>(undefined);
 
@@ -53,31 +26,46 @@ export class DemoPage {
   private serviceA       = inject(DemoServiceImplA);
   private serviceB       = inject(DemoServiceImplB);
   private serviceC       = inject(DemoServiceImplC);
-  private injector       = inject(EnvironmentInjector);
 
   constructor() {
     this.currentService.set(this.serviceDefault);
+  }
 
-    runInInjectionContext(this.injector, () => {
-      effect(() => {
-        const svc = this.currentService();
-        if (!svc) return;
-        this.globalState.workKind          = svc.globalState.workKind();
-        this.globalState.userName          = svc.globalState.userName();
-        this.globalState.progress          = svc.globalState.progress();
-        this.globalState.logs              = svc.globalState.logs();
-        this.localState.isEnableComplete   = svc.localState.isEnableComplete();
-        this.localState.isEnableCancel     = svc.localState.isEnableCancel();
-        this.localState.isEnableExecute    = svc.localState.isEnableExecute();
-        this.localState.isEnableSelectUser = svc.localState.isEnableSelectUser();
-        this.localState.isEnableSelectWork = svc.localState.isEnableSelectWork();
-        this.localState.isVisibleDialog    = svc.localState.isVisibleDialog();
-        this.localState.isEnablePlus       = svc.localState.isEnablePlus();
-        this.localState.isEnableMinus      = svc.localState.isEnableMinus();
-        this.localState.isEnableDecide     = svc.localState.isEnableDecide();
-        this.localState.isEnableBack       = svc.localState.isEnableBack();
-      });
-    });
+  get globalState(): { workKind: string; userName: string; progress: number; logs: DemoLog[] } {
+    const svc = this.currentService();
+    return {
+      workKind: svc?.globalState.workKind() ?? '',
+      userName: svc?.globalState.userName() ?? '',
+      progress: svc?.globalState.progress() ?? 0,
+      logs: svc?.globalState.logs() ?? [],
+    };
+  }
+
+  get localState(): {
+    isEnableComplete: boolean;
+    isEnableCancel: boolean;
+    isEnableExecute: boolean;
+    isEnableSelectUser: boolean;
+    isEnableSelectWork: boolean;
+    isVisibleDialog: boolean;
+    isEnablePlus: boolean;
+    isEnableMinus: boolean;
+    isEnableDecide: boolean;
+    isEnableBack: boolean;
+  } {
+    const svc = this.currentService();
+    return {
+      isEnableComplete: svc?.localState.isEnableComplete() ?? false,
+      isEnableCancel: svc?.localState.isEnableCancel() ?? false,
+      isEnableExecute: svc?.localState.isEnableExecute() ?? false,
+      isEnableSelectUser: svc?.localState.isEnableSelectUser() ?? false,
+      isEnableSelectWork: svc?.localState.isEnableSelectWork() ?? false,
+      isVisibleDialog: svc?.localState.isVisibleDialog() ?? false,
+      isEnablePlus: svc?.localState.isEnablePlus() ?? true,
+      isEnableMinus: svc?.localState.isEnableMinus() ?? true,
+      isEnableDecide: svc?.localState.isEnableDecide() ?? true,
+      isEnableBack: svc?.localState.isEnableBack() ?? true,
+    };
   }
 
   onComplete() {
