@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-demo-parts-select',
@@ -7,16 +7,16 @@ import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular
   styleUrls: ['./demo-parts-select.scss']
 })
 export class DemoPartsSelect {
-  @Input() globalState: { workKind: Signal<string>; userName: Signal<string> } = {
-    workKind: signal(''),
-    userName: signal('')
+  @Input() globalState: { workKind: string; userName: string } = {
+    workKind: '',
+    userName: '',
   };
   @Input() localState: {
-    isEnableSelectUser: Signal<boolean>;
-    isEnableSelectWork: Signal<boolean>;
+    isEnableSelectUser: boolean;
+    isEnableSelectWork: boolean;
   } = {
-    isEnableSelectUser: signal(false),
-    isEnableSelectWork: signal(false)
+    isEnableSelectUser: false,
+    isEnableSelectWork: false,
   };
   @Input() userList: string[] = [];
   @Input() workList: string[] = [];

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal, computed, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-demo-parts-center',
@@ -7,31 +7,31 @@ import { Component, EventEmitter, Input, Output, Signal, computed, signal } from
   styleUrls: ['./demo-parts-center.scss']
 })
 export class DemoPartsCenter {
-  @Input() globalState: { workKind: Signal<string>; progress: Signal<number> } = {
-    workKind: signal(''),
-    progress: signal(0)
+  @Input() globalState: { workKind: string; progress: number } = {
+    workKind: '',
+    progress: 0,
   };
   @Input() localState: {
-    isEnableComplete: Signal<boolean>;
-    isEnableCancel: Signal<boolean>;
-    isEnableExecute: Signal<boolean>;
+    isEnableComplete: boolean;
+    isEnableCancel: boolean;
+    isEnableExecute: boolean;
   } = {
-    isEnableComplete: signal(false),
-    isEnableCancel: signal(false),
-    isEnableExecute: signal(false)
+    isEnableComplete: false,
+    isEnableCancel: false,
+    isEnableExecute: false,
   };
 
   @Output() click_complete_event = new EventEmitter<void>();
   @Output() click_cancel_event   = new EventEmitter<void>();
   @Output() click_execute_event  = new EventEmitter<void>();
 
-  message: Signal<string> = computed(() =>
-    `現在実行中の作業は${this.globalState?.workKind()}です。`
-  );
+  get message(): string {
+    return `現在実行中の作業は${this.globalState?.workKind}です。`;
+  }
 
-  progressMessage: Signal<string> = computed(() =>
-    `完了数：${this.globalState?.progress()}`
-  );
+  get progressMessage(): string {
+    return `完了数：${this.globalState?.progress}`;
+  }
 
   onClickCompleteBtn() {
     this.click_complete_event.emit();

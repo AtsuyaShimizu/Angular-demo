@@ -29,7 +29,7 @@
     ></app-demo-parts-log>
   </div>
 
-  @if (localState.isVisibleDialog()) {
+  @if (localState.isVisibleDialog) {
     <app-demo-parts-dialog
       [localState]="localState"
       (click_decide_event)="click_decide_event.emit($event)"
