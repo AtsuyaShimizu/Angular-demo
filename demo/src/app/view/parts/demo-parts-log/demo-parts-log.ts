@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
-import { DemoLog } from '../../../../domain/state/global/demo-global.state';
+import { DemoLog } from '../../../domain/state/global/demo-global.state';
 
 @Component({
   selector: 'app-demo-parts-log',
