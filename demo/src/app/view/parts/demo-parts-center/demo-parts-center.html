@@ -1,28 +1,28 @@
 <div class="center-content">
   <div class="message">
-    {{ message() }}
+    {{ message }}
   </div>
   <div class="progress">
-    {{ progressMessage() }}
+    {{ progressMessage }}
   </div>
   <div class="btn-group">
     <button
       class="action-btn complete"
-      [disabled]="!localState.isEnableComplete()"
+      [disabled]="!localState.isEnableComplete"
       (click)="onClickCompleteBtn()"
     >
       完了
     </button>
     <button
       class="action-btn cancel"
-      [disabled]="!localState.isEnableCancel()"
+      [disabled]="!localState.isEnableCancel"
       (click)="onClickCancelBtn()"
     >
       キャンセル
     </button>
     <button
       class="action-btn execute"
-      [disabled]="!localState.isEnableExecute()"
+      [disabled]="!localState.isEnableExecute"
       (click)="onClickExecuteBtn()"
     >
       実行

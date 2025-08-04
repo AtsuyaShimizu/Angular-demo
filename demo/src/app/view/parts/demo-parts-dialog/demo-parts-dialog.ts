@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-demo-parts-dialog',
@@ -8,15 +8,15 @@ import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular
 })
 export class DemoPartsDialog {
   @Input() localState: {
-    isEnablePlus: Signal<boolean>;
-    isEnableMinus: Signal<boolean>;
-    isEnableDecide: Signal<boolean>;
-    isEnableBack: Signal<boolean>;
+    isEnablePlus: boolean;
+    isEnableMinus: boolean;
+    isEnableDecide: boolean;
+    isEnableBack: boolean;
   } = {
-    isEnablePlus: signal(true),
-    isEnableMinus: signal(true),
-    isEnableDecide: signal(true),
-    isEnableBack: signal(true)
+    isEnablePlus: true,
+    isEnableMinus: true,
+    isEnableDecide: true,
+    isEnableBack: true,
   };
 
   @Output() click_decide_event = new EventEmitter<number>();

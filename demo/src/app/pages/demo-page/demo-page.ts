@@ -3,7 +3,6 @@ import {
   effect,
   runInInjectionContext,
   signal,
-  Signal,
   inject,
   EnvironmentInjector
 } from '@angular/core';
@@ -26,24 +25,24 @@ export class DemoPage {
   workList = ['作業A', '作業B', '作業C'];
   userList = ['Aoki', 'Yamada', 'Suzuki', 'Tanaka'];
 
-  // 子に渡す中継シグナル
+  // 子に渡す値
   globalState = {
-    workKind: signal(''),
-    userName: signal(''),
-    progress: signal(0),
-    logs: signal<DemoLog[]>([])
+    workKind: '',
+    userName: '',
+    progress: 0,
+    logs: [] as DemoLog[],
   };
   localState = {
-    isEnableComplete:   signal(false),
-    isEnableCancel:     signal(false),
-    isEnableExecute:    signal(false),
-    isEnableSelectUser: signal(false),
-    isEnableSelectWork: signal(false),
-    isVisibleDialog:    signal(false),
-    isEnablePlus:       signal(true),
-    isEnableMinus:      signal(true),
-    isEnableDecide:     signal(true),
-    isEnableBack:       signal(true)
+    isEnableComplete:   false,
+    isEnableCancel:     false,
+    isEnableExecute:    false,
+    isEnableSelectUser: false,
+    isEnableSelectWork: false,
+    isVisibleDialog:    false,
+    isEnablePlus:       true,
+    isEnableMinus:      true,
+    isEnableDecide:     true,
+    isEnableBack:       true,
   };
 
   // 「今のサービス」を保持する Signal。最初は undefined でOK。
@@ -63,20 +62,20 @@ export class DemoPage {
       effect(() => {
         const svc = this.currentService();
         if (!svc) return;
-        this.globalState.workKind         .set( svc.globalState.workKind() );
-        this.globalState.userName         .set( svc.globalState.userName() );
-        this.globalState.progress         .set( svc.globalState.progress() );
-        this.globalState.logs             .set( svc.globalState.logs() );
-        this.localState.isEnableComplete  .set( svc.localState.isEnableComplete() );
-        this.localState.isEnableCancel    .set( svc.localState.isEnableCancel() );
-        this.localState.isEnableExecute   .set( svc.localState.isEnableExecute() );
-        this.localState.isEnableSelectUser.set( svc.localState.isEnableSelectUser() );
-        this.localState.isEnableSelectWork.set( svc.localState.isEnableSelectWork() );
-        this.localState.isVisibleDialog   .set( svc.localState.isVisibleDialog() );
-        this.localState.isEnablePlus      .set( svc.localState.isEnablePlus() );
-        this.localState.isEnableMinus     .set( svc.localState.isEnableMinus() );
-        this.localState.isEnableDecide    .set( svc.localState.isEnableDecide() );
-        this.localState.isEnableBack      .set( svc.localState.isEnableBack() );
+        this.globalState.workKind          = svc.globalState.workKind();
+        this.globalState.userName          = svc.globalState.userName();
+        this.globalState.progress          = svc.globalState.progress();
+        this.globalState.logs              = svc.globalState.logs();
+        this.localState.isEnableComplete   = svc.localState.isEnableComplete();
+        this.localState.isEnableCancel     = svc.localState.isEnableCancel();
+        this.localState.isEnableExecute    = svc.localState.isEnableExecute();
+        this.localState.isEnableSelectUser = svc.localState.isEnableSelectUser();
+        this.localState.isEnableSelectWork = svc.localState.isEnableSelectWork();
+        this.localState.isVisibleDialog    = svc.localState.isVisibleDialog();
+        this.localState.isEnablePlus       = svc.localState.isEnablePlus();
+        this.localState.isEnableMinus      = svc.localState.isEnableMinus();
+        this.localState.isEnableDecide     = svc.localState.isEnableDecide();
+        this.localState.isEnableBack       = svc.localState.isEnableBack();
       });
     });
   }

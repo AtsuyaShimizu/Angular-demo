@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DemoLog } from '../../../domain/state/global/demo-global.state';
 
 @Component({
@@ -8,7 +8,7 @@ import { DemoLog } from '../../../domain/state/global/demo-global.state';
   styleUrls: ['./demo-parts-log.scss']
 })
 export class DemoPartsLog {
-  @Input() log: Signal<DemoLog[]> = signal([]);
+  @Input() log: DemoLog[] = [];
   @Output() remove_log = new EventEmitter<number>();
 
   remove(index: number) {

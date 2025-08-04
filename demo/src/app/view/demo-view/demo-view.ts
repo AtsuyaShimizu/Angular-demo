@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DemoLog } from '../../domain/state/global/demo-global.state';
 import { DemoPartsSelect } from '../parts/demo-parts-select/demo-parts-select';
 import { DemoPartsCenter } from '../parts/demo-parts-center/demo-parts-center';
@@ -14,38 +14,38 @@ import { DemoPartsDialog } from '../parts/demo-parts-dialog/demo-parts-dialog';
 })
 export class DemoView {
   @Input() globalState: {
-    workKind: Signal<string>;
-    userName: Signal<string>;
-    progress: Signal<number>;
-    logs: Signal<DemoLog[]>;
+    workKind: string;
+    userName: string;
+    progress: number;
+    logs: DemoLog[];
   } = {
-    workKind: signal(''),
-    userName: signal(''),
-    progress: signal(0),
-    logs: signal([]),
+    workKind: '',
+    userName: '',
+    progress: 0,
+    logs: [],
   };
   @Input() localState: {
-    isEnableComplete: Signal<boolean>;
-    isEnableCancel: Signal<boolean>;
-    isEnableExecute: Signal<boolean>;
-    isEnableSelectUser: Signal<boolean>;
-    isEnableSelectWork: Signal<boolean>;
-    isVisibleDialog: Signal<boolean>;
-    isEnablePlus: Signal<boolean>;
-    isEnableMinus: Signal<boolean>;
-    isEnableDecide: Signal<boolean>;
-    isEnableBack: Signal<boolean>;
+    isEnableComplete: boolean;
+    isEnableCancel: boolean;
+    isEnableExecute: boolean;
+    isEnableSelectUser: boolean;
+    isEnableSelectWork: boolean;
+    isVisibleDialog: boolean;
+    isEnablePlus: boolean;
+    isEnableMinus: boolean;
+    isEnableDecide: boolean;
+    isEnableBack: boolean;
   } = {
-    isEnableComplete: signal(false),
-    isEnableCancel: signal(false),
-    isEnableExecute: signal(false),
-    isEnableSelectUser: signal(false),
-    isEnableSelectWork: signal(false),
-    isVisibleDialog: signal(false),
-    isEnablePlus: signal(true),
-    isEnableMinus: signal(true),
-    isEnableDecide: signal(true),
-    isEnableBack: signal(true)
+    isEnableComplete: false,
+    isEnableCancel: false,
+    isEnableExecute: false,
+    isEnableSelectUser: false,
+    isEnableSelectWork: false,
+    isVisibleDialog: false,
+    isEnablePlus: true,
+    isEnableMinus: true,
+    isEnableDecide: true,
+    isEnableBack: true,
   };
   @Input() userList: string[] = [];
   @Input() workList: string[] = [];

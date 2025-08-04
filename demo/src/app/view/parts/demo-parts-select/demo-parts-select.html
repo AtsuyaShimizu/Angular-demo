@@ -3,9 +3,9 @@
     <label class="dropdown-label" for="userSelect">ユーザー選択</label>
     <select
       id="userSelect"
-      [value]="globalState.userName()"
+      [value]="globalState.userName"
       (change)="onSelectUser($event)"
-      [disabled]="!localState.isEnableSelectUser()"
+      [disabled]="!localState.isEnableSelectUser"
     >
       <option value="" disabled>ユーザを選択。</option>
       @for (user of userList; track user; let i = $index) {
@@ -17,9 +17,9 @@
     <label class="dropdown-label" for="workSelect">作業選択</label>
     <select
       id="workSelect"
-      [value]="globalState.workKind()"
+      [value]="globalState.workKind"
       (change)="onSelectWork($event)"
-      [disabled]="!localState.isEnableSelectWork()"
+      [disabled]="!localState.isEnableSelectWork"
     >
       <option value="未確認" disabled>作業を選択。</option>
       @for (work of workList; track work; let i = $index) {
