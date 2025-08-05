@@ -50,3 +50,7 @@ The frontend file structure and responsibilities are as follows:
 * Act as container components.
 * Responsible for mapping events emitted from View components to appropriate methods in Service classes.
 * Retrieve state from State classes through Service classes and pass the state to View components.
+
+### 3. Signal Declaration
+
+* globalStateやlocalStateで使用するSignalは、`computed`などによる読み取り専用のケースを除き、`WritableSignal`で宣言してください。

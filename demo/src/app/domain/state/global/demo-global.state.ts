@@ -1,4 +1,4 @@
-import { Injectable, signal, Signal } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { PersistentStateAuto } from '../utils/persistent-state-auto';
 
 export interface DemoLog {
@@ -16,22 +16,22 @@ export class DemoState extends PersistentStateAuto {
     super('demo-state');
   }
 
-  private _workKind = signal('未確認');
-  private _userName = signal('');
-  private _progress = signal(0);
-  private _logs = signal<DemoLog[]>([]);
+  private _workKind: WritableSignal<string> = signal('未確認');
+  private _userName: WritableSignal<string> = signal('');
+  private _progress: WritableSignal<number> = signal(0);
+  private _logs: WritableSignal<DemoLog[]> = signal<DemoLog[]>([]);
 
-  get workKind(): Signal<string> {
+  get workKind(): WritableSignal<string> {
     return this._workKind;
   }
-  get userName(): Signal<string> {
+  get userName(): WritableSignal<string> {
     return this._userName;
   }
-  get progress(): Signal<number> {
+  get progress(): WritableSignal<number> {
     return this._progress;
   }
 
-  get logs(): Signal<DemoLog[]> {
+  get logs(): WritableSignal<DemoLog[]> {
     return this._logs;
   }
 

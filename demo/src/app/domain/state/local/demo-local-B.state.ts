@@ -1,4 +1,4 @@
-import { computed, Injectable, Signal, signal } from "@angular/core";
+import { computed, Injectable, Signal, signal, WritableSignal } from "@angular/core";
 import { DemoState } from "../global/demo-global.state";
 import { DemoLocalState } from "../demo-local-state-interface";
 import { PersistentStateAuto } from "../utils/persistent-state-auto";
@@ -15,11 +15,11 @@ export class DemoLocalStateB extends PersistentStateAuto implements DemoLocalSta
   private _isEnableExecute  = computed(() => this.globalState.progress() < 7);
   private _isEnableSelectUser = computed(() => false);
   private _isEnableSelectWork = computed(() => false);
-  private _isVisibleDialog = signal(false);
-  private _isEnablePlus   = signal(true);
-  private _isEnableMinus  = signal(true);
-  private _isEnableDecide = signal(true);
-  private _isEnableBack   = signal(true);
+  private _isVisibleDialog: WritableSignal<boolean> = signal(false);
+  private _isEnablePlus:   WritableSignal<boolean> = signal(true);
+  private _isEnableMinus:  WritableSignal<boolean> = signal(true);
+  private _isEnableDecide: WritableSignal<boolean> = signal(true);
+  private _isEnableBack:   WritableSignal<boolean> = signal(true);
 
   get isEnableComplete(): Signal<boolean> {
     return this._isEnableComplete;
@@ -36,19 +36,19 @@ export class DemoLocalStateB extends PersistentStateAuto implements DemoLocalSta
   get isEnableSelectWork(): Signal<boolean> {
     return this._isEnableSelectWork;
   }
-  get isVisibleDialog(): Signal<boolean> {
+  get isVisibleDialog(): WritableSignal<boolean> {
     return this._isVisibleDialog;
   }
-  get isEnablePlus(): Signal<boolean> {
+  get isEnablePlus(): WritableSignal<boolean> {
     return this._isEnablePlus;
   }
-  get isEnableMinus(): Signal<boolean> {
+  get isEnableMinus(): WritableSignal<boolean> {
     return this._isEnableMinus;
   }
-  get isEnableDecide(): Signal<boolean> {
+  get isEnableDecide(): WritableSignal<boolean> {
     return this._isEnableDecide;
   }
-  get isEnableBack(): Signal<boolean> {
+  get isEnableBack(): WritableSignal<boolean> {
     return this._isEnableBack;
   }
 }
