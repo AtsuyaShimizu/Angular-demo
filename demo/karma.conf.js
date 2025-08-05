@@ -1,4 +1,6 @@
 // karma.conf.js
+process.env.CHROME_BIN = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
 module.exports = function (config) {
   config.set({
     basePath: '',
