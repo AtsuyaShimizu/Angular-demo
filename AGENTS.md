@@ -1,5 +1,9 @@
 # AGENTS.md
 
+## Communication Rules
+
+Codexが作業する際のログ出力やサマリーなどは日本語で表示してください。
+
 ## Coding Rules
 
 Please follow the rules below when writing code.
