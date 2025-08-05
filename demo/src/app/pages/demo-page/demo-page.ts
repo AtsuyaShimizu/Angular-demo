@@ -29,6 +29,19 @@ export class DemoPage {
 
   constructor() {
     this.currentService.set(this.serviceDefault);
+    queueMicrotask(() => this.restoreCurrentService());
+  }
+
+  private restoreCurrentService() {
+    const work = this.serviceDefault.globalState.workKind();
+    const next = work === '作業A'
+      ? this.serviceA
+      : work === '作業B'
+        ? this.serviceB
+        : work === '作業C'
+          ? this.serviceC
+          : this.serviceDefault;
+    this.currentService.set(next);
   }
 
   get globalState(): { workKind: string; userName: string; progress: number; logs: DemoLog[] } {
