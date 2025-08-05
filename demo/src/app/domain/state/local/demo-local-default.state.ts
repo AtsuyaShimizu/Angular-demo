@@ -1,4 +1,4 @@
-import { Injectable, signal, Signal } from "@angular/core";
+import { Injectable, signal, WritableSignal } from "@angular/core";
 import { DemoState } from "../global/demo-global.state";
 import { DemoLocalState } from "../demo-local-state-interface";
 import { PersistentStateAuto } from "../utils/persistent-state-auto";
@@ -10,45 +10,45 @@ export class DemoLocalStateDefault extends PersistentStateAuto implements DemoLo
     super('demo-local-state-default');
   }
 
-  private _isEnableComplete = signal(false);
-  private _isEnableCancel   = signal(false);
-  private _isEnableExecute  = signal(false);
-  private _isEnableSelectUser = signal(true);
-  private _isEnableSelectWork = signal(true);
-  private _isVisibleDialog = signal(false);
-  private _isEnablePlus   = signal(true);
-  private _isEnableMinus  = signal(true);
-  private _isEnableDecide = signal(true);
-  private _isEnableBack   = signal(true);
+  private _isEnableComplete:   WritableSignal<boolean> = signal(false);
+  private _isEnableCancel:     WritableSignal<boolean> = signal(false);
+  private _isEnableExecute:    WritableSignal<boolean> = signal(false);
+  private _isEnableSelectUser: WritableSignal<boolean> = signal(true);
+  private _isEnableSelectWork: WritableSignal<boolean> = signal(true);
+  private _isVisibleDialog:    WritableSignal<boolean> = signal(false);
+  private _isEnablePlus:       WritableSignal<boolean> = signal(true);
+  private _isEnableMinus:      WritableSignal<boolean> = signal(true);
+  private _isEnableDecide:     WritableSignal<boolean> = signal(true);
+  private _isEnableBack:       WritableSignal<boolean> = signal(true);
 
-  get isEnableComplete(): Signal<boolean> {
+  get isEnableComplete(): WritableSignal<boolean> {
     return this._isEnableComplete;
   }
-  get isEnableCancel(): Signal<boolean> {
+  get isEnableCancel(): WritableSignal<boolean> {
     return this._isEnableCancel;
   }
-  get isEnableExecute(): Signal<boolean> {
+  get isEnableExecute(): WritableSignal<boolean> {
     return this._isEnableExecute;
   }
-  get isEnableSelectUser(): Signal<boolean> {
+  get isEnableSelectUser(): WritableSignal<boolean> {
     return this._isEnableSelectUser;
   }
-  get isEnableSelectWork(): Signal<boolean> {
+  get isEnableSelectWork(): WritableSignal<boolean> {
     return this._isEnableSelectWork;
   }
-  get isVisibleDialog(): Signal<boolean> {
+  get isVisibleDialog(): WritableSignal<boolean> {
     return this._isVisibleDialog;
   }
-  get isEnablePlus(): Signal<boolean> {
+  get isEnablePlus(): WritableSignal<boolean> {
     return this._isEnablePlus;
   }
-  get isEnableMinus(): Signal<boolean> {
+  get isEnableMinus(): WritableSignal<boolean> {
     return this._isEnableMinus;
   }
-  get isEnableDecide(): Signal<boolean> {
+  get isEnableDecide(): WritableSignal<boolean> {
     return this._isEnableDecide;
   }
-  get isEnableBack(): Signal<boolean> {
+  get isEnableBack(): WritableSignal<boolean> {
     return this._isEnableBack;
   }
 }
