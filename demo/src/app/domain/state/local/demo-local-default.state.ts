@@ -1,11 +1,14 @@
 import { Injectable, signal, Signal } from "@angular/core";
 import { DemoState } from "../global/demo-global.state";
 import { DemoLocalState } from "../demo-local-state-interface";
+import { PersistentStateAuto } from "../utils/persistent-state-auto";
 
 @Injectable({ providedIn: 'root' })
-export class DemoLocalStateDefault implements DemoLocalState {
+export class DemoLocalStateDefault extends PersistentStateAuto implements DemoLocalState {
   // Angular の DI から同じ DemoState を注入
-  constructor(private globalState: DemoState) {}
+  constructor(private globalState: DemoState) {
+    super('demo-local-state-default');
+  }
 
   private _isEnableComplete = signal(false);
   private _isEnableCancel   = signal(false);
