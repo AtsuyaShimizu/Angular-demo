@@ -1,4 +1,5 @@
 import { Injectable, signal, Signal } from '@angular/core';
+import { PersistentStateAuto } from '../utils/persistent-state-auto';
 
 export interface DemoLog {
   work: string;
@@ -10,7 +11,11 @@ export interface DemoLog {
 }
 
 @Injectable({ providedIn: 'root' })
-export class DemoState {
+export class DemoState extends PersistentStateAuto {
+  constructor() {
+    super('demo-state');
+  }
+
   private _workKind = signal('未確認');
   private _userName = signal('');
   private _progress = signal(0);
