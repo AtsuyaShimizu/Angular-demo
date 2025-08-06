@@ -2,21 +2,24 @@ import { WritableSignal, effect } from '@angular/core';
 
 export abstract class PersistentStateAuto {
   constructor(private readonly storageKey: string) {
-    const saved = localStorage.getItem(this.storageKey);
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved);
-        this.restoreSignals(parsed);
-      } catch (e) {
-        console.warn(`[${this.storageKey}] Failed to parse localStorage:`, e);
+    // サブクラスのフィールド初期化後に復元・監視を行う
+    queueMicrotask(() => {
+      const saved = localStorage.getItem(this.storageKey);
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          this.restoreSignals(parsed);
+        } catch (e) {
+          console.warn(`[${this.storageKey}] Failed to parse localStorage:`, e);
+        }
       }
-    }
 
-    // 自動保存
-    effect(() => this.autoSave());
+      // 自動保存
+      effect(() => this.autoSave());
 
-    // Signal変更のログ記録
-    this.setupLogging();
+      // Signal変更のログ記録
+      this.setupLogging();
+    });
   }
 
   // 保存対象の制限（null = 全Signal）

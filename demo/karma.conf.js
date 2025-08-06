@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 process.env.CHROME_BIN = require('puppeteer').executablePath();
+=======
+// karma.conf.js
+// Chrome バイナリのパスを取得
+if (!process.env.CHROME_BIN) {
+  try {
+    // Puppeteer が取得した Chromium を使用
+    process.env.CHROME_BIN = require('puppeteer').executablePath();
+  } catch (e) {
+    // Puppeteer が利用できない場合は環境変数に任せる
+  }
+}
+>>>>>>> 9438e6e84cb6d311700a96a5c1673d7694c445c6
 
 module.exports = function (config) {
   config.set({
@@ -24,13 +37,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
+    browsers: ['ChromeHeadlessNoSandbox'],
     customLaunchers: {
-      ChromeHeadlessPuppeteer: {
+      ChromeHeadlessNoSandbox: {
         base: 'ChromeHeadless',
-        flags: ['--no-sandbox']
+        flags: ['--no-sandbox', '--disable-setuid-sandbox']
       }
     },
-    browsers: ['ChromeHeadlessPuppeteer'],
     singleRun: true,
     restartOnFileChange: true
   });
