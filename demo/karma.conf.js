@@ -1,5 +1,4 @@
-// karma.conf.js
-process.env.CHROME_BIN = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function (config) {
   config.set({
@@ -13,7 +12,7 @@ module.exports = function (config) {
       require('@angular-devkit/build-angular/plugins/karma'),
     ],
     client: {
-      clearContext: false // Jasmine Spec Runnerの結果を残す
+      clearContext: false
     },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage'),
@@ -25,7 +24,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    customLaunchers: {
+      ChromeHeadlessPuppeteer: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
+    browsers: ['ChromeHeadlessPuppeteer'],
     singleRun: true,
     restartOnFileChange: true
   });
